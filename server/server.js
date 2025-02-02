@@ -9,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
@@ -16,7 +17,7 @@ app.use(
   })
 );
 
-app.get("/help", (req, res) => {
+app.get("/api/help", (req, res) => {
   res.send("hello world");
 });
 
