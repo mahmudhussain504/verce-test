@@ -1,25 +1,17 @@
 import express from "express";
-import cors from "cors";
 import "dotenv/config";
-import cookieParser from "cookie-parser";
 
 const app = express();
-
-const PORT = process.env.PORT || 8080;
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(
-  cors({
-    credentials: true,
-  })
-);
+const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.send("Hello from Vercel!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.get("/api/test", (req, res) => {
+  res.json({ message: "API is working!" });
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
